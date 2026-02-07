@@ -9,7 +9,7 @@ import {
   FolderGit2,
   Trophy,
   Heart,
-  ExternalLink,
+
   Code2,
   Wrench,
   Database,
@@ -372,35 +372,33 @@ export default function Resume() {
         <Section icon={FolderGit2} title="Projects">
           <div className="grid gap-4 sm:grid-cols-2">
             {projects.map((proj, i) => (
-              <Card
+              <a
                 key={i}
-                className="flex flex-col justify-between py-4 hover:shadow-md transition-shadow"
+                href={proj.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block rounded-xl"
               >
-                <CardHeader className="pb-0">
-                  <div className="flex items-start justify-between gap-2">
-                    <CardTitle className="text-base">{proj.name}</CardTitle>
-                    <a
-                      href={proj.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="shrink-0 text-muted-foreground hover:text-primary transition-colors"
-                      aria-label={`View ${proj.name} on GitHub`}
-                    >
-                      <ExternalLink className="h-4 w-4" />
-                    </a>
-                  </div>
-                </CardHeader>
-                <CardContent className="pt-3 flex-1 flex flex-col justify-between gap-3">
-                  <p className="text-sm text-muted-foreground">{proj.description}</p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {proj.tags.map((tag) => (
-                      <Badge key={tag} variant="outline" className="text-xs font-normal">
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+                <Card
+                  className="flex flex-col justify-between py-4 h-full border-blue-200/60 shadow-[0_0_8px_rgba(96,165,250,0.15)] transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(96,165,250,0.35)] group-hover:border-blue-300"
+                >
+                  <CardHeader className="pb-0">
+                    <CardTitle className="text-base group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                      {proj.name}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="pt-3 flex-1 flex flex-col justify-between gap-3">
+                    <p className="text-sm text-muted-foreground">{proj.description}</p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {proj.tags.map((tag) => (
+                        <Badge key={tag} variant="outline" className="text-xs font-normal">
+                          {tag}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </a>
             ))}
           </div>
         </Section>
