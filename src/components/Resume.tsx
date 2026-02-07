@@ -230,7 +230,7 @@ export default function Resume() {
             </a>
             <span className="hidden sm:inline text-border">|</span>
             <a
-              href="https://www.linkedin.com/in/andrea-kalenda/"
+              href="https://www.linkedin.com/in/andrea-kalenda-a76520238/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 hover:text-blue-400 hover:drop-shadow-[0_0_6px_rgba(96,165,250,0.6)] transition-all"
