@@ -205,8 +205,10 @@ function Section({
 
 export default function Resume() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-muted/30">
-      <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8 space-y-10">
+    <div className="relative min-h-screen bg-background">
+      {/* Gradient overlay that transitions via opacity */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent to-muted/30 transition-opacity duration-200 ease-in-out" />
+      <div className="relative mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8 space-y-10">
         {/* ── Header ─────────────────────────────────────────────── */}
         <header className="text-center space-y-4">
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
