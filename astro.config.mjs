@@ -7,7 +7,7 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://jkalend.github.io',
-  base: '/github_resume_page',
+  base: '/resume_github_page',
   integrations: [react()],
 
   vite: {
