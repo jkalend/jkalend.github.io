@@ -122,7 +122,7 @@ const projects = [
       "A custom-made, local (but easily extendible) CI/CD pipeline manager built on Python backend and TypeScript + React.",
     link: "https://github.com/jkalend/custom-cicd",
     linkLabel: "GitHub",
-    tags: ["Python", "TypeScript", "React"],
+    tags: ["Python", "TypeScript", "React", "CI/CD", "Docker"],
   },
   {
     name: "EEG-based Detection of Internet Addiction",
