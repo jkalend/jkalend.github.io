@@ -9,6 +9,7 @@ import {
   FolderGit2,
   Trophy,
   Heart,
+  ArrowRight,
 
   Code2,
   Wrench,
@@ -20,6 +21,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { GlowCard } from "@/components/ui/glow-card";
+import { ProjectCard } from "@/components/ProjectCard";
+import { projects, featuredProjects } from "@/lib/projects";
 
 /* ------------------------------------------------------------------ */
 /*  Data                                                               */
@@ -115,56 +118,6 @@ const researchExperience = [
   },
 ];
 
-const projects = [
-  {
-    name: "Custom CI/CD Pipeline Manager",
-    description:
-      "A custom-made, local (but easily extendible) CI/CD pipeline manager built on Python backend and TypeScript + React.",
-    link: "https://github.com/jkalend/custom-cicd",
-    linkLabel: "GitHub",
-    tags: ["Python", "TypeScript", "React", "CI/CD", "Docker"],
-  },
-  {
-    name: "EEG-based Detection of Internet Addiction",
-    description:
-      "Deep Learning project focused on processing EEG signals, built using Python and PyTorch. Transformer approach with convolutional layers and residual connections as the main structure; LSTM, raw CNNs, and other architectures were also tested.",
-    link: "https://huggingface.co/Soromis/BP-transformer-EEG/blob/main/Bachelor_thesis.pdf",
-    linkLabel: "Check it out!",
-    tags: ["Python", "PyTorch", "Deep Learning", "EEG"],
-  },
-  {
-    name: "Storehouse",
-    description:
-      "Storehouse system written in Go, architected as Kubernetes-based microservices communicating through gRPC.",
-    link: "https://github.com/jkalend/Go-storehouse",
-    linkLabel: "GitHub",
-    tags: ["Go", "Kubernetes", "gRPC", "Microservices"],
-  },
-  {
-    name: "Turing Machine",
-    description:
-      "Nondeterministic Turing Machine implementation in Prolog, originally built as DFS but ended up as better performing BFS. Simulates whether the machine accepts a given input string.",
-    link: "https://github.com/jkalend/VUT-FLP/tree/main/FLP2",
-    linkLabel: "GitHub",
-    tags: ["Prolog", "Automata Theory"],
-  },
-  {
-    name: "Digital Piano Tone Synthesis",
-    description:
-      "Advanced digital signal processing techniques for analyzing and synthesizing piano tones using Python (Jupyter Notebooks). Processes recorded piano samples to extract fundamental frequencies and synthesize new tones.",
-    link: "https://github.com/jkalend/VUT-ISS",
-    linkLabel: "GitHub",
-    tags: ["Python", "DSP", "Signal Processing"],
-  },
-  {
-    name: "Simulation Model of SpaceX's Mars Logistics",
-    description:
-      "A discrete-event simulation model for analyzing SpaceX's Mars logistics operations, focusing on transportation of materials and supplies to Mars using the Starship spacecraft system. Written in C++ utilizing Simlib library.",
-    link: "https://github.com/jkalend/VUT-IMS",
-    linkLabel: "Check it out!",
-    tags: ["C++", "Simulation", "Simlib"],
-  },
-];
 
 const competitions = [
   {
@@ -253,9 +206,12 @@ export default function Resume() {
 
         {/* ── Education ──────────────────────────────────────────── */}
         <Section icon={GraduationCap} title="Education">
-          <div className="space-y-4">
+          <div className="space-y-3">
             {education.map((edu, i) => (
-              <Card key={i} className="border-none shadow-none bg-transparent py-4">
+              <Card
+                key={i}
+                className="rounded-lg border border-border/50 bg-muted/30 dark:bg-muted/5 py-4 px-4"
+              >
                 <CardHeader className="pb-0 p-0 px-0">
                   <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1">
                     <div>
@@ -385,38 +341,23 @@ export default function Resume() {
         {/* ── Projects ───────────────────────────────────────────── */}
         <Section icon={FolderGit2} title="Projects">
           <div className="grid gap-4 sm:grid-cols-2">
-            {projects.map((proj, i) => (
-              <a
-                key={i}
-                href={proj.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group block"
-              >
-                <GlowCard className="rounded-xl h-full">
-                  <Card
-                    className="flex flex-col justify-between py-4 h-full border-blue-200/60 shadow-[0_0_8px_rgba(96,165,250,0.15)] transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(96,165,250,0.35)] group-hover:border-blue-300"
-                  >
-                    <CardHeader className="pb-0">
-                      <CardTitle className="text-base group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                        {proj.name}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="pt-3 flex-1 flex flex-col justify-between gap-3">
-                      <p className="text-sm text-muted-foreground">{proj.description}</p>
-                      <div className="flex flex-wrap gap-1.5">
-                        {proj.tags.map((tag) => (
-                          <Badge key={tag} variant="outline" className="text-xs font-normal">
-                            {tag}
-                          </Badge>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-                </GlowCard>
-              </a>
+            {featuredProjects.map((proj, i) => (
+              <ProjectCard key={i} project={proj} />
             ))}
           </div>
+          <a
+            href={`${import.meta.env.BASE_URL}projects`}
+            className="group mt-4 block w-full"
+          >
+            <GlowCard className="rounded-xl">
+              <Card className="flex items-center justify-between gap-4 py-3 px-4 border-blue-200/60 shadow-[0_0_8px_rgba(96,165,250,0.15)] transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(96,165,250,0.35)] group-hover:border-blue-300">
+                <span className="text-sm font-medium text-muted-foreground group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                  View all {projects.length} projects
+                </span>
+                <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-blue-600 dark:group-hover:text-blue-400 group-hover:translate-x-0.5 transition-all shrink-0" />
+              </Card>
+            </GlowCard>
+          </a>
         </Section>
 
         {/* ── Competitions ───────────────────────────────────────── */}
@@ -445,9 +386,15 @@ export default function Resume() {
           <GlowCard className="rounded-xl">
             <Card className="py-4">
               <CardContent>
-                <div className="flex items-center gap-2 text-sm">
-                  <span className="h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
-                  <span>Archery club member in a local club &mdash; 2019 - 2023</span>
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2 text-sm">
+                    <span className="h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
+                    <span>Archery club member in a local club &middot; 2019 - 2023</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm">
+                    <span className="h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
+                    <span>Member in VUT Erasmus Student Network &middot; 2026 - present</span>
+                  </div>
                 </div>
               </CardContent>
             </Card>
