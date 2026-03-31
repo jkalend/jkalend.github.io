@@ -38,7 +38,7 @@ export function ProjectCard({ project, variant = "compact" }: ProjectCardProps) 
       rel="noopener noreferrer"
       className="group block"
     >
-      <GlowCard className="rounded-xl h-full">
+      <GlowCard className="h-full rounded-xl transition-transform duration-300 ease-out group-hover:scale-[1.02]">
         <Card
           className={`flex h-full flex-col justify-between border border-blue-200/60 bg-muted/25 shadow-[0_0_8px_rgba(96,165,250,0.15)] transition-all duration-300 dark:bg-muted/35 group-hover:border-blue-300 group-hover:shadow-[0_0_20px_rgba(96,165,250,0.35)] ${
             isDetailed ? "gap-5 px-1 py-5 sm:px-2" : "py-4"
