@@ -93,6 +93,17 @@ const skills = {
 
 const workExperience = [
   {
+    title: "Scanning Engine Developer Intern",
+    company: "Gen Digital",
+    location: "Brno, Czech Republic",
+    date: "July 2026 - September 2026",
+    bullets: [
+      "Developed detection for obfuscated Windows batch scripts, strengthening identification of evasive command-based threats.",
+      "Built a cmd.exe emulator to safely reproduce Windows command-shell behavior and improve malware analysis coverage.",
+      "Collaborated with engineering and DevOps teams to integrate detection capabilities and streamline analysis workflows.",
+    ],
+  },
+  {
     title: "Associate Software Test Engineer",
     company: "Solarwinds",
     location: "Brno, Czech Republic",
